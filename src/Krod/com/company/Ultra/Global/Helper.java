@@ -13,4 +13,8 @@ public class Helper {
             response += key + " = " + parameters.get(key) + "\n";
         System.out.println(response);
     }
+
+    public static void printMaps(Map<? , ?> map){
+        System.out.println(map);
+    }
 }

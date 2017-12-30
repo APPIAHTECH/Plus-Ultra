@@ -3,6 +3,7 @@ package Krod.com.company.Ultra.Methods;
 import Krod.com.company.Ultra.Server;
 import Krod.com.company.Web.Routers.Roots;
 
+import java.util.Arrays;
 import java.util.HashMap;
 
 public class PlusUltra{
@@ -34,8 +35,8 @@ public class PlusUltra{
         for (String key : getRoots.keySet()){
             path = getPath(key);
             meth = getMethods(key);
-            System.out.println(" GET : Path -> "+path);
-            System.out.println("Meth -> "+meth);
+            path = setParamiters(path);
+            System.out.println(path);
             routerHandle =  new RouterHandle(getRoots.get(key) , meth);
             response += key + " = " + getRoots.get(key) + "\n";
             server.getServer().createContext(path , routerHandle);
@@ -49,8 +50,6 @@ public class PlusUltra{
         for (String key : getRoots.keySet()){
             path = getPath(key);
             meth = getMethods(key);
-            System.out.println("POST : Path -> "+path);
-            System.out.println("Meth -> "+meth);
             routerHandle =  new RouterHandle(getRoots.get(key) , meth);
             response += key + " = " + getRoots.get(key) + "\n";
             server.getServer().createContext(path , routerHandle);
@@ -65,6 +64,17 @@ public class PlusUltra{
     private String getMethods(String path){
         int pos = path.indexOf(";");
         return path.substring(pos+1);
+    }
+
+    private String setParamiters(String arg){
+        if(arg.contains(":")) {
+            int pos = arg.indexOf(":");
+            String sufix = arg.substring(0 , pos);
+            String pars = arg.substring(pos+1);
+            Request.paramsPrexisis().put(sufix , pars);
+            return sufix;
+        }else
+            return arg;
     }
 
 }

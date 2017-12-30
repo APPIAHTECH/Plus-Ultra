@@ -7,7 +7,7 @@ import Krod.com.company.Ultra.Server;
 public class Main {
 
     public static void main(String[] args) {
-        Settings set = new Settings("/assets", "localhost" , 5000);
+        Settings set = new Settings("/assets", "localhost" , 3500);
         PlusUltra rapid = new PlusUltra(set);
         rapid.ultra();
     }

@@ -47,22 +47,11 @@ final public class Response extends InputOutput implements ParseRequest{
 
     }
 
-    public static Map<String, Object> bodyParse(){
-        try{
-            // parse request
-            Map<String, Object> parameters = new HashMap<String, Object>();
-            InputStreamReader isr = new InputStreamReader(getHttpExchange().getRequestBody(), "utf-8");
-            BufferedReader br = new BufferedReader(isr);
-            String query = br.readLine();
-            System.out.println(query + " params : "+ parameters);
-            parameters = ParseRequest.parseQuery(query, parameters);
-            return parameters;
+    static public void json(){}
+    static public void sendStatus(){}
+    static public void download(){}
+    static public void redirect(){}
+    static public void render(){}
 
-        }catch (Exception e){
-
-        }
-
-        return null;
-    }
 
 }
